@@ -8,6 +8,6 @@ require_relative './nba_statline/team'
 #require_relative './nba_statline/conference'
 require_relative './nba_statline/player'
 
-module nba_statline
+module NbaStatline
   # Your code goes here...
 end
