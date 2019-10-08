@@ -1,4 +1,4 @@
-class Nbastatline::Team
+class NbaStatline::Team
   attr_accessor :name, :conference, :players, :url
 
   @@all = []
@@ -11,7 +11,7 @@ class Nbastatline::Team
   def self.create_teams
     doc = Nokogiri::HTML(open("http://espn.go.com/nba/teams"))
     doc.search("a.bi").each do |team| 
-      new_team = Nbastatline::Team.new
+      new_team = NbaStatline::Team.new
       new_team.name = team.text
       new_team.url = team["href"]
       @@all << new_team
@@ -47,7 +47,7 @@ class Nbastatline::Team
       
       doc = Nokogiri::HTML(open(self.url))
       doc.search("td.sortcell a").each do |player|
-      new_player = Nbastatline::Player.create_from_data(player)
+      new_player = NbaStatline::Player.create_from_data(player)
       
       new_player.add_player_info
       new_player.team = self
