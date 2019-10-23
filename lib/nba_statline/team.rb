@@ -1,3 +1,4 @@
+require "open-uri"
 class NbaStatline::Team
   attr_accessor :name, :conference, :players, :url
 

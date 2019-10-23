@@ -1,5 +1,5 @@
-# require "nokogiri"
-require "open-uri"
+require "nokogiri"
+# require "open-uri"
 
 require_relative './nba_statline/cli'
 require_relative './nba_statline/version'
