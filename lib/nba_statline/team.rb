@@ -1,5 +1,4 @@
 require "open-uri"
-require ""
 class NbaStatline::Team
   attr_accessor :name, :conference, :players, :url
 
