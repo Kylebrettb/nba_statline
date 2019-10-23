@@ -9,11 +9,11 @@ class NbaStatline::Team
 
 
   def self.create_teams
-    doc = Nokogiri::HTML(open("http://espn.go.com/nba/teams"))
-    doc.search("a.bi").each do |team| 
+    doc = Nokogiri::HTML(open("https://espn.com/nba/teams"))
+    doc.search("div.pl3").each do |team| 
       new_team = NbaStatline::Team.new
-      new_team.name = team.text
-      new_team.url = team["href"]
+      new_team.name = team.children.first.text
+      new_team.url = team.children.first["href"]
       @@all << new_team
     end
 
