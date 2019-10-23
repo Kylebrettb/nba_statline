@@ -1,5 +1,5 @@
 require "open-uri"
-require "nokogiri"
+require ""
 class NbaStatline::Team
   attr_accessor :name, :conference, :players, :url
 
@@ -60,18 +60,8 @@ class NbaStatline::Team
   end
 
   def format_team_url
-    split_array = self.url.split("/")
-    new_array = []
-    split_array.each do |text|
-      if text == "_"
-        text = "roster"
-        new_array << text
-      else 
-        new_array << text
-      end
-    end
-    new_array.pop
-    new_array.insert(6,"_")
-    new_array.join("/")
+    split_url = self.url.split("/")
+    team_abbreviation = split_url[6] 
+    "https://www.espn.com/nba/team/roster/_/name/" + team_abbreviation
   end
 end
