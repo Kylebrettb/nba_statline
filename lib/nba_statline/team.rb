@@ -1,4 +1,5 @@
 require "open-uri"
+require "nokogiri"
 class NbaStatline::Team
   attr_accessor :name, :conference, :players, :url
 
