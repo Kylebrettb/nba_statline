@@ -45,7 +45,7 @@ class NbaStatline::Team
 
   def create_players_from_team
     self.url = self.format_team_url
-     puts self.url 
+     
       doc = Nokogiri::HTML(open(self.url))
       doc.search("tbody tr.Table__TR").each do |player|
       new_player = NbaStatline::Player.create_from_data(player)
@@ -60,7 +60,7 @@ class NbaStatline::Team
 
   def format_team_url
     split_url = self.url.split("/")
-    team_abbreviation = split_url[6] 
+    team_abbreviation = split_url[5] 
     "https://www.espn.com/nba/team/roster/_/name/" + team_abbreviation
   end
 end
