@@ -45,7 +45,7 @@ class NbaStatline::Team
 
   def create_players_from_team
     self.url = self.format_team_url
-      
+     puts self.url 
       doc = Nokogiri::HTML(open(self.url))
       doc.search("tbody tr.Table__TR").each do |player|
       new_player = NbaStatline::Player.create_from_data(player)
