@@ -14,7 +14,7 @@ class NbaStatline::Player
       new_player = NbaStatline::Player.new
       new_player.name = player.children[1].children[0].children[0].text
       
-      new_player.url = player.children[1].children[0].children[0]["href"]
+      new_player.url = player.children[1].children[0].children[0]["href"].insert(4, "s")
       @@all << new_player
       new_player
        
