@@ -14,7 +14,7 @@ class NbaStatline::Player
       new_player = NbaStatline::Player.new
       new_player.name = player.children[1].children[0].children[0].text
       
-      new_player.url = player['href']
+      new_player.url = player.children[1].children[0].children[0]["href"]
       @@all << new_player
       new_player
        
@@ -23,8 +23,8 @@ class NbaStatline::Player
   def add_player_info
     doc = Nokogiri::HTML(open(self.url))
     
-      self.number = doc.search("ul.general-info li").first.text.match(/\d+/)
-      self.position = doc.search("ul.general-info li").first.text.match(/[A-Z]+/)
+      self.number = doc.search("ul.PlayerHeader__Team_Info").children[1].text
+      self.position = doc.search("ul.PlayerHeader__Team_Info").children[2].text
         
   end
 
